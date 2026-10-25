@@ -1,5 +1,7 @@
 # CodeNest — 每个用户一个专属 OpenCode 沙箱容器
 
+[English](README.en.md) | 简体中文
+
 一个多租户 Web 平台：用户注册/登录后，后端自动为该用户创建一个专属 Docker 容器，容器内运行
 `opencode serve`（官方镜像），Web 端通过后端代理调用容器内的 OpenCode HTTP API 进行对话。
 

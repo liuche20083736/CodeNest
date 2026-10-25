@@ -1,5 +1,7 @@
 # CodeNest — A dedicated OpenCode sandbox container for every user
 
+English | [简体中文](README.md)
+
 A multi-tenant web platform: after a user signs up / signs in, the backend automatically creates a dedicated Docker container for that user running `opencode serve` (official image). The web frontend talks to the OpenCode HTTP API inside the container through a backend proxy.
 
 ## Architecture
