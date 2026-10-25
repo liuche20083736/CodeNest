@@ -1,0 +1,15 @@
+# dependencies / build output
+node_modules/
+dist/
+
+# java
+server/target/
+server/data/
+
+# environment
+.env
+
+# IDE
+.idea/
+.vscode/
+*.iml

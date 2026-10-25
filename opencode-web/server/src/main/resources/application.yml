@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: codenest
+  datasource:
+    url: jdbc:h2:file:./data/opencode-web;AUTO_SERVER=TRUE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+ocw:
+  # Docker daemon location. Auto-detect by default (DOCKER_HOST env -> Windows
+  # named pipe -> tcp://localhost:2375). Override via ocw.docker-host config,
+  # OCW_DOCKER_HOST env, or DOCKER_HOST env.
+  docker-host: ${OCW_DOCKER_HOST:}
+  # OpenCode sandbox image. Must be a V2 image (V2 HTTP API):
+  # any tag of ghcr.io/anomalyco/opencode >= 2.x, override via env OCW_OPENCODE_IMAGE
+  image: ${OCW_OPENCODE_IMAGE:ghcr.io/anomalyco/opencode:2.1.4}
+  # "host-port" = backend on host, reach containers via 127.0.0.1:<mappedPort> (default)
+  # "container-dns" = backend itself runs in Docker on the same network, reach
+  #                   containers via http://<containerName>:4096
+  connect-mode: ${OCW_CONNECT_MODE:host-port}
+  # Max seconds to wait for a container's OpenCode API to answer after start
+  ready-timeout-seconds: ${OCW_READY_TIMEOUT:120}
+  # JWT secret; leave empty to auto-generate one at startup (sessions reset on restart)
+  jwt-secret: ${OCW_JWT_SECRET:}
+
+logging:
+  level:
+    com.github.dockerjava: WARN
